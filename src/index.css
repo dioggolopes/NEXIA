@@ -1,0 +1,250 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: #050505;
+  color: #ffffff;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.nexia-page {
+  min-height: 100vh;
+  width: 100%;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #050505;
+}
+
+/* brilho extremamente discreto */
+
+.background-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background: rgba(115, 100, 255, 0.10);
+
+  filter: blur(140px);
+
+  pointer-events: none;
+}
+
+/* conteúdo */
+
+.nexia-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 720px;
+
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* logo */
+
+.logo-mark {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 17px;
+
+  background: #ffffff;
+
+  color: #050505;
+
+  font-size: 26px;
+  font-weight: 800;
+
+  letter-spacing: -2px;
+
+  box-shadow:
+    0 10px 50px rgba(255, 255, 255, 0.08);
+}
+
+/* nome */
+
+.brand-name {
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 5px;
+
+  color: #777777;
+}
+
+/* título */
+
+.nexia-content h1 {
+  margin: 34px 0 0;
+
+  font-size: clamp(44px, 6vw, 70px);
+
+  line-height: 1.03;
+
+  letter-spacing: -4px;
+
+  font-weight: 400;
+}
+
+.nexia-content h1 span {
+  font-weight: 700;
+
+  background: linear-gradient(
+    110deg,
+    #ffffff 20%,
+    #a9a1ff 80%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+/* descrição */
+
+.description {
+  max-width: 430px;
+
+  margin: 25px 0 32px;
+
+  color: #777777;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+/* botão */
+
+.enter-button {
+  height: 50px;
+
+  padding: 0 8px 0 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  color: #050505;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.enter-button span {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #050505;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  transition: transform 0.25s ease;
+}
+
+.enter-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 40px rgba(255, 255, 255, 0.08);
+}
+
+.enter-button:hover span {
+  transform: translateX(3px);
+}
+
+/* segurança */
+
+.security {
+  margin-top: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #444444;
+
+  font-size: 10px;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #63d391;
+
+  box-shadow:
+    0 0 7px rgba(99, 211, 145, 0.7);
+}
+
+/* versão */
+
+.version {
+  position: absolute;
+
+  bottom: 22px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #292929;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+}

@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import './App.css'
-import Dashboard from './Components/Dashboard'
-import Sales from './Components/Sales'
+import NexiaLayout from './components/NexiaLayout'
+
+type Screen = 'home' | 'login' | 'app'
+
 function App() {
-  const [screen, setScreen] = useState<
-  'home' | 'login' | 'dashboard' | 'sales'
->('home')
-  
- 
+  const [screen, setScreen] = useState<Screen>('home')
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,7 +14,7 @@ function App() {
   function handleLogin() {
     if (email === 'demo@nexia.com' && password === '123456') {
       setError('')
-      setScreen('dashboard')
+      setScreen('app')
     } else {
       setError('E-mail ou senha incorretos.')
     }
@@ -25,6 +23,7 @@ function App() {
   if (screen === 'home') {
     return (
       <main className="nexia-page">
+
         <div className="background-glow"></div>
 
         <div className="nexia-content">
@@ -62,6 +61,7 @@ function App() {
         <div className="version">
           NEXIA · 0.1
         </div>
+
       </main>
     )
   }
@@ -85,7 +85,9 @@ function App() {
             NEXIA
           </div>
 
-          <h1>Bem-vindo de volta.</h1>
+          <h1>
+            Bem-vindo de volta.
+          </h1>
 
           <p>
             Acesse sua inteligência.
@@ -93,7 +95,9 @@ function App() {
 
           <div className="form">
 
-            <label>E-mail</label>
+            <label>
+              E-mail
+            </label>
 
             <input
               type="email"
@@ -102,7 +106,9 @@ function App() {
               onChange={(event) => setEmail(event.target.value)}
             />
 
-            <label>Senha</label>
+            <label>
+              Senha
+            </label>
 
             <input
               type="password"
@@ -134,7 +140,9 @@ function App() {
 
           <div className="demo-info">
             <span>DEMO</span>
-            <p>demo@nexia.com · 123456</p>
+            <p>
+              demo@nexia.com · 123456
+            </p>
           </div>
 
         </div>
@@ -142,14 +150,8 @@ function App() {
       </main>
     )
   }
-if (screen === 'sales') {
-  return <Sales />
-}
- return (
-  <Dashboard
-    onOpenSales={() => setScreen('sales')}
-  />
-)
+
+  return <NexiaLayout />
 }
 
 export default App

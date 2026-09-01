@@ -1605,4 +1605,602 @@ input {
   color: #55565d;
 
   font-size: 9px;
+}/* ========================================
+   NEXIA APP SHELL — LAYOUT INTEGRADO
+======================================== */
+
+.nexia-layout {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  background: #07080a;
+  color: #f5f5f7;
+}
+
+/* SIDEBAR INTEGRADA */
+
+.nexia-sidebar {
+  width: 250px;
+  min-width: 250px;
+  min-height: 100vh;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px 16px;
+
+  background: #090a0d;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.055);
+
+  transition:
+    width 0.25s ease,
+    min-width 0.25s ease;
+
+  z-index: 10;
+}
+
+.sidebar-logo {
+  padding: 0 14px;
+  margin-bottom: 42px;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+/* NAVEGAÇÃO */
+
+.nexia-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nexia-sidebar .sidebar-item {
+  width: 100%;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 14px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #62636b;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  text-align: left;
+}
+
+.nexia-sidebar .sidebar-item span {
+  width: 18px;
+  min-width: 18px;
+
+  display: flex;
+  justify-content: center;
+
+  font-size: 14px;
+}
+
+.nexia-sidebar .sidebar-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.nexia-sidebar .sidebar-item.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.075);
+}
+
+/* PARTE INFERIOR */
+
+.nexia-sidebar .sidebar-bottom {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+/* BOTÃO RECOLHER */
+
+.sidebar-toggle {
+  position: absolute;
+
+  top: 28px;
+  right: -12px;
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+
+  background: #111216;
+
+  color: #85868d;
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  transition: 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  color: #ffffff;
+  background: #18191e;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.nexia-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: #07080a;
+}
+
+/* ESTADO RECOLHIDO */
+
+.nexia-layout.sidebar-collapsed .nexia-sidebar {
+  width: 72px;
+  min-width: 72px;
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.nexia-layout.sidebar-collapsed .sidebar-logo {
+  padding: 0;
+
+  text-align: center;
+
+  font-size: 0;
+
+  margin-bottom: 42px;
+}
+
+.nexia-layout.sidebar-collapsed .sidebar-logo::after {
+  content: "N";
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.nexia-layout.sidebar-collapsed .sidebar-item {
+  justify-content: center;
+  padding: 0;
+}
+
+.nexia-layout.sidebar-collapsed .sidebar-item span {
+  margin: 0;
+}
+
+/* ========================================
+   LIQUID GLASS
+======================================== */
+
+.nexia-glass {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+
+  border-radius: 18px;
+}/* ========================================
+   NEXIA CLIENTS
+======================================== */
+
+.clients-page {
+  min-height: 100vh;
+  padding: 45px 55px;
+  color: #f5f5f7;
+}
+
+.clients-back {
+  border: none;
+  background: transparent;
+  color: #55565d;
+  padding: 0;
+  margin-bottom: 35px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.clients-back:hover {
+  color: #ffffff;
+}
+
+.clients-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.clients-header h1 {
+  margin: 12px 0 6px;
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+.clients-header p {
+  margin: 0;
+  color: #64656c;
+  font-size: 13px;
+}
+
+.new-client-button {
+  height: 42px;
+  padding: 0 17px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+
+  font-size: 11px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.new-client-button:hover {
+  background: rgba(255, 255, 255, 0.10);
+  transform: translateY(-1px);
+}
+
+/* BARRA DE BUSCA */
+
+.clients-toolbar {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 40px;
+}
+
+.clients-search {
+  flex: 1;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.clients-search span {
+  color: #55565d;
+  font-size: 18px;
+}
+
+.clients-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: #ffffff;
+
+  font-size: 11px;
+}
+
+.clients-search input::placeholder {
+  color: #45464d;
+}
+
+.clients-filter {
+  width: 160px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+
+  background: #0d0e11;
+  color: #777880;
+
+  padding: 0 12px;
+
+  outline: none;
+  font-size: 10px;
+}
+
+/* TABELA */
+
+.clients-card {
+  margin-top: 14px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.clients-table-header,
+.client-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 2fr)
+    0.7fr
+    1fr
+    1fr
+    0.8fr;
+
+  align-items: center;
+}
+
+.clients-table-header {
+  min-height: 48px;
+
+  padding: 0 24px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.clients-table-header span {
+  color: #4f5057;
+
+  font-size: 8px;
+  letter-spacing: 1.8px;
+}
+
+.client-row {
+  min-height: 72px;
+
+  padding: 0 24px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+
+  transition: 0.2s ease;
+}
+
+.client-row:last-child {
+  border-bottom: none;
+}
+
+.client-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.client-row > span,
+.client-row > strong {
+  color: #777880;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.client-row > strong {
+  color: #b8b8be;
+}
+
+.client-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.client-avatar {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  color: #aaa3ff;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.client-name strong {
+  color: #eeeeef;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.client-date {
+  color: #55565d !important;
+}
+
+.client-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 9px !important;
+}
+
+.status-indicator {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+}
+
+.client-status.active {
+  color: #65bf8b !important;
+}
+
+.client-status.active .status-indicator {
+  background: #65bf8b;
+  box-shadow: 0 0 8px rgba(101, 191, 139, 0.6);
+}
+
+.client-status.inactive {
+  color: #66676e !important;
+}
+
+.client-status.inactive .status-indicator {
+  background: #55565d;
+}
+
+/* RESUMO */
+
+.clients-summary {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 14px;
+
+  margin-top: 14px;
+}
+
+.clients-summary > div {
+  min-height: 105px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.clients-summary span {
+  color: #55565d;
+
+  font-size: 8px;
+  letter-spacing: 1.8px;
+}
+
+.clients-summary strong {
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+  .clients-page {
+    padding: 35px;
+  }
+
+  .clients-table-header,
+  .client-row {
+    grid-template-columns:
+      2fr
+      0.7fr
+      1fr
+      0.8fr;
+  }
+
+  .clients-table-header span:nth-child(4),
+  .client-row .client-date {
+    display: none;
+  }
+
+  .clients-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .clients-page {
+    padding: 25px 18px;
+  }
+
+  .clients-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .clients-toolbar {
+    flex-direction: column;
+  }
+
+  .clients-filter {
+    width: 100%;
+    height: 45px;
+  }
+
+  .clients-table-header {
+    display: none;
+  }
+
+  .client-row {
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .client-row > span:nth-child(2),
+  .client-row > strong:nth-child(3),
+  .client-status {
+    display: none;
+  }
+
+  .clients-summary {
+    grid-template-columns: 1fr;
+  }
 }

@@ -97,11 +97,7 @@ function NexiaLayout() {
           />
         )}
 
-        {screen === 'clients' && (
-          <Clients
-            onBack={() => setScreen('dashboard')}
-          />
-        )}
+        {screen === 'clients' && <Clients />}
 
       </main>
 

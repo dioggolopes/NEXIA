@@ -37,20 +37,12 @@ const clients: Client[] = [
   },
 ]
 
-type ClientsProps = {
-  onBack: () => void
-}
 
-function Clients({ onBack }: ClientsProps) {
+
+function Clients() {
   return (
     <div className="clients-page">
 
-      <button
-        className="clients-back"
-        onClick={onBack}
-      >
-        ← Voltar ao Dashboard
-      </button>
 
       <div className="clients-header">
 

@@ -1,6 +1,24 @@
-function Sales() {
+type SalesProps = {
+  onBack: () => void
+}
+
+function Sales({ onBack }: SalesProps) {
   return (
     <div className="sales-page">
+
+      <button
+        onClick={onBack}
+        style={{
+          border: 'none',
+          background: 'transparent',
+          cursor: 'pointer',
+          fontSize: '14px',
+          marginBottom: '24px',
+          padding: '8px 0'
+        }}
+      >
+        ← Voltar ao Dashboard
+      </button>
 
       <div className="sales-header">
 

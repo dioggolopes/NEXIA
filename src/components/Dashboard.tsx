@@ -1,4 +1,13 @@
-function Dashboard() {
+type DashboardProps = {
+  onAskAI: (context: {
+    metric: string
+    value: string
+    variation: string
+    question: string
+  }) => void
+}
+
+function Dashboard({ onAskAI }: DashboardProps) {
   return (
     <div className="dashboard-content">
 
@@ -187,10 +196,21 @@ function Dashboard() {
             que podem gerar crescimento.
           </p>
 
-          <button className="intelligence-button">
-            Ver oportunidades
-            <span>→</span>
-          </button>
+          <button
+  className="intelligence-button"
+  onClick={() =>
+    onAskAI({
+      metric: 'Oportunidades de crescimento',
+      value: '7 oportunidades',
+      variation: 'Análise estratégica',
+      question:
+        'Analise as 7 oportunidades encontradas no meu negócio, explique quais são as mais importantes, o impacto potencial de cada uma e quais ações devo priorizar primeiro.',
+    })
+  }
+>
+  Ver oportunidades
+  <span>→</span>
+</button>
 
         </div>
 

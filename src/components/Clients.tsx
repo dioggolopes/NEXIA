@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+
 type Client = {
   name: string
   purchases: number
@@ -37,57 +39,125 @@ const clients: Client[] = [
   },
 ]
 
-
+const filterOptions = [
+  { value: 'all', label: 'Todos os clientes' },
+  { value: 'active', label: 'Ativos' },
+  { value: 'inactive', label: 'Inativos' },
+]
 
 function Clients() {
+  const [filter, setFilter] = useState('all')
+  const [filterOpen, setFilterOpen] = useState(false)
+
+  const filterRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        filterRef.current &&
+        !filterRef.current.contains(event.target as Node)
+      ) {
+        setFilterOpen(false)
+      }
+    }
+
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setFilterOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
+  const filteredClients = clients.filter((client) => {
+    if (filter === 'active') return client.status === 'Ativo'
+    if (filter === 'inactive') return client.status === 'Inativo'
+
+    return true
+  })
+
+  const selectedFilter =
+    filterOptions.find((option) => option.value === filter) ??
+    filterOptions[0]
+
   return (
     <div className="clients-page">
-
-
       <div className="clients-header">
-
         <div>
-          <span className="dashboard-eyebrow">
-            NEXIA INTELLIGENCE
-          </span>
-
+          <span className="dashboard-eyebrow">NEXIA INTELLIGENCE</span>
           <h1>Clientes</h1>
-
           <p>
-            Conheça seus clientes e acompanhe o relacionamento com o seu negócio.
+            Conheça seus clientes e acompanhe o relacionamento com o seu
+            negócio.
           </p>
         </div>
 
-        <button className="new-client-button">
-          + Novo cliente
-        </button>
-
+        <button className="new-client-button">+ Novo cliente</button>
       </div>
 
       <section className="clients-toolbar">
-
         <div className="clients-search">
           <span>⌕</span>
-
-          <input
-            type="text"
-            placeholder="Buscar cliente..."
-          />
+          <input type="text" placeholder="Buscar cliente..." />
         </div>
 
-        <select
-          className="clients-filter"
-          defaultValue="all"
-        >
-          <option value="all">Todos os clientes</option>
-          <option value="active">Ativos</option>
-          <option value="inactive">Inativos</option>
-        </select>
+        <div className="clients-filter-wrap" ref={filterRef}>
+          <button
+            type="button"
+            className={`clients-filter-button ${
+              filterOpen ? 'open' : ''
+            }`}
+            onClick={() => setFilterOpen((current) => !current)}
+            aria-haspopup="listbox"
+            aria-expanded={filterOpen}
+          >
+            <span>{selectedFilter.label}</span>
 
+            <span
+              className={`clients-filter-chevron ${
+                filterOpen ? 'rotated' : ''
+              }`}
+            >
+              ⌄
+            </span>
+          </button>
+
+          {filterOpen && (
+            <div className="clients-filter-menu" role="listbox">
+              {filterOptions.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  role="option"
+                  aria-selected={filter === option.value}
+                  className={`clients-filter-option ${
+                    filter === option.value ? 'selected' : ''
+                  }`}
+                  onClick={() => {
+                    setFilter(option.value)
+                    setFilterOpen(false)
+                  }}
+                >
+                  <span>{option.label}</span>
+
+                  {filter === option.value && (
+                    <span className="clients-filter-check">✓</span>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </section>
 
       <section className="clients-card">
-
         <div className="clients-table-header">
           <span>CLIENTE</span>
           <span>COMPRAS</span>
@@ -96,31 +166,19 @@ function Clients() {
           <span>STATUS</span>
         </div>
 
-        {clients.map((client) => (
-          <div
-            className="client-row"
-            key={client.name}
-          >
-
+        {filteredClients.map((client) => (
+          <div className="client-row" key={client.name}>
             <div className="client-name">
-
               <div className="client-avatar">
                 {client.name.charAt(0)}
               </div>
 
-              <strong>
-                {client.name}
-              </strong>
-
+              <strong>{client.name}</strong>
             </div>
 
-            <span>
-              {client.purchases}
-            </span>
+            <span>{client.purchases}</span>
 
-            <strong>
-              {client.revenue}
-            </strong>
+            <strong>{client.revenue}</strong>
 
             <span className="client-date">
               {client.lastPurchase}
@@ -128,22 +186,17 @@ function Clients() {
 
             <span
               className={`client-status ${
-                client.status === 'Ativo'
-                  ? 'active'
-                  : 'inactive'
+                client.status === 'Ativo' ? 'active' : 'inactive'
               }`}
             >
               <span className="status-indicator"></span>
               {client.status}
             </span>
-
           </div>
         ))}
-
       </section>
 
       <section className="clients-summary">
-
         <div>
           <span>TOTAL DE CLIENTES</span>
           <strong>1.248</strong>
@@ -163,9 +216,7 @@ function Clients() {
           <span>RETENÇÃO</span>
           <strong>91,4%</strong>
         </div>
-
       </section>
-
     </div>
   )
 }
